@@ -1,0 +1,19 @@
+camunda:
+  client:
+    mode: self-managed
+    auth:
+      client-id: xxx
+      client-secret: xxx
+      issuer: https://login.microsoftonline.com/TENANT_ID/oauth2/v2.0/token
+#      keystore-path: <your keystore path>
+#      keystore-password: <your keystore password>
+#      keystore-key-password: <your keystore key password>
+#      truststore-path: <your truststore path>
+#      truststore-password: <your truststore password>
+    zeebe:
+      enabled: true
+      grpc-address: https://my-domain-name
+      rest-address: https://my-domain-name/rest
+      prefer-rest-over-grpc: false
+      audience: zeebe-api
+      scope: CLIENT_ID/.default
