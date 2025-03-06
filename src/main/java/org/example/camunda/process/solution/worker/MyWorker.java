@@ -19,7 +19,7 @@ public class MyWorker {
     this.myService = myService;
   }
 
-  @JobWorker(type = "myJobType")
+  @JobWorker(type = "myService")
   public ProcessVariables invokeMyService(@VariablesAsType ProcessVariables variables) {
     LOG.info("Invoking myService with variables: " + variables);
 

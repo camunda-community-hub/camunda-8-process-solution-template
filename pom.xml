@@ -10,7 +10,7 @@
   <version>1.0.0-SNAPSHOT</version>
 
   <properties>
-    <java.version>21</java.version>
+    <java.version>17</java.version>
     <spring-boot.version>3.3.0</spring-boot.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -54,7 +54,7 @@
     <dependency>
       <groupId>io.camunda</groupId>
       <artifactId>spring-boot-starter-camunda-sdk</artifactId>
-      <version>8.6.7</version>
+      <version>8.6.6</version>
     </dependency>
 
   </dependencies>

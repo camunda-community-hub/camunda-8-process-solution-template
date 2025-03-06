@@ -1,12 +1,16 @@
-# https://docs.camunda.io/docs/apis-tools/spring-zeebe-sdk/getting-started/
-# https://docs.camunda.io/docs/apis-tools/spring-zeebe-sdk/configuration/
-
 camunda:
   client:
-    mode: saas
+    mode: self-managed
+    tenant-ids:
+      - <default>
     auth:
-      client-id: xxx
+      issuer: https://dave01.gke.c8sm.com/auth/realms/camunda-platform/protocol/openid-connect/token
+      client-id: zeebe
       client-secret: xxx
-    cluster-id: xxx
-    region: xxx
-
+    zeebe:
+      enabled: true
+      grpc-address: https://dave01.gke.c8sm.com
+      rest-address: https://dave01.gke.c8sm.com/rest
+      prefer-rest-over-grpc: true
+      audience: zeebe-api
+   #   scope: # optional
