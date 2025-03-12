@@ -7,7 +7,8 @@ camunda:
     zeebe:
       base-url: https://dave01.gke.c8sm.com
       rest-address: https://dave01.gke.c8sm.com/rest
-      prefer-rest-over-grpc: true
+      grpc-address: https://dave01.gke.c8sm.com
+      prefer-rest-over-grpc: false
   connector:
     polling:
       enabled: false
