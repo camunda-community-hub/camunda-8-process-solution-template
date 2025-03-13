@@ -1,7 +1,7 @@
 camunda:
   client:
     auth:
-      issuer: https://dave01.gke.c8sm.com/auth/realms/camunda-platform
+      issuer: https://dave01.gke.c8sm.com/auth/realms/camunda-platform/protocol/openid-connect/token
       client-id: zeebe
       client-secret: xxx
     zeebe:
@@ -9,15 +9,19 @@ camunda:
       rest-address: https://dave01.gke.c8sm.com/rest
       grpc-address: https://dave01.gke.c8sm.com
       prefer-rest-over-grpc: false
+    identity:
+      audience: connectors
+      base-url: https://dave01.gke.c8sm.com/auth
+    mode: selfmanaged
   connector:
     polling:
-      enabled: false
+      enabled: true
     webhook:
-      enabled: false
+      enabled: true
 
 operate:
   client:
-    enabled: false
+    enabled: true
     profile: oidc
     url: https://dave01.gke.c8sm.com/operate
     base-url: https://dave01.gke.c8sm.com/operate
