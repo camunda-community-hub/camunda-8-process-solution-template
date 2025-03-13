@@ -8,20 +8,21 @@ camunda:
       base-url: https://dave01.gke.c8sm.com
       rest-address: https://dave01.gke.c8sm.com/rest
       grpc-address: https://dave01.gke.c8sm.com
-      prefer-rest-over-grpc: false
+      prefer-rest-over-grpc: true
+      audience: zeebe-api
     identity:
       audience: connectors
       base-url: https://dave01.gke.c8sm.com/auth
-    mode: selfmanaged
+    mode: self-managed
   connector:
     polling:
-      enabled: true
+      enabled: false
     webhook:
-      enabled: true
+      enabled: false
 
 operate:
   client:
-    enabled: true
+    enabled: false
     profile: oidc
     url: https://dave01.gke.c8sm.com/operate
     base-url: https://dave01.gke.c8sm.com/operate
