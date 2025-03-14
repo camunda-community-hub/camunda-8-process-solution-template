@@ -56,7 +56,11 @@
       <artifactId>connector-http-json</artifactId>
       <version>8.7.0-alpha4</version>
     </dependency>
-
+    <dependency>
+      <groupId>io.camunda.connector</groupId>
+      <artifactId>connector-webhook</artifactId>
+      <version>8.7.0-alpha4</version>
+    </dependency>
   </dependencies>
 
   <build>
