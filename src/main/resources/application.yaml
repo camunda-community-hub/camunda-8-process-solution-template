@@ -19,8 +19,6 @@ camunda:
       enabled: true
     webhook:
       enabled: true
-  operate:
-    client:
 
 # https://github.com/camunda-community-hub/camunda-operate-client-java?tab=readme-ov-file#how-to-build-the-client
 operate:

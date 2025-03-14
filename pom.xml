@@ -49,17 +49,17 @@
     <dependency>
       <groupId>io.camunda.connector</groupId>
       <artifactId>spring-boot-starter-camunda-connectors</artifactId>
-      <version>8.7.0-alpha4</version>
+      <version>8.7.0-alpha5</version>
     </dependency>
     <dependency>
       <groupId>io.camunda.connector</groupId>
       <artifactId>connector-http-json</artifactId>
-      <version>8.7.0-alpha4</version>
+      <version>8.7.0-alpha5</version>
     </dependency>
     <dependency>
       <groupId>io.camunda.connector</groupId>
       <artifactId>connector-webhook</artifactId>
-      <version>8.7.0-alpha4</version>
+      <version>8.7.0-alpha5</version>
     </dependency>
   </dependencies>
 
