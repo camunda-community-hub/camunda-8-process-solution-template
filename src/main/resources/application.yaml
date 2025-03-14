@@ -16,18 +16,20 @@ camunda:
     mode: self-managed
   connector:
     polling:
-      enabled: false
+      enabled: true
     webhook:
-      enabled: false
+      enabled: true
+  operate:
+    client:
 
+# https://github.com/camunda-community-hub/camunda-operate-client-java?tab=readme-ov-file#how-to-build-the-client
 operate:
   client:
-    enabled: false
     profile: oidc
-    url: https://dave01.gke.c8sm.com/operate
+    enabled: true
     base-url: https://dave01.gke.c8sm.com/operate
     auth-url: https://dave01.gke.c8sm.com/auth/realms/camunda-platform/protocol/openid-connect/token
-    keycloak-url: https://dave01.gke.c8sm.com/auth
     audience: operate-api
-    client-id: operate
+    client-id: connectors
     client-secret: xxx
+
