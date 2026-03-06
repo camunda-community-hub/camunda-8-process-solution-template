@@ -29,6 +29,28 @@ Run the application via
 ./mvnw spring-boot:run
 ```
 
+### Build a Docker image
+
+You can build an OCI image directly from Maven using Spring Boot Buildpacks:
+
+```sh
+./mvnw -DskipTests spring-boot:build-image
+```
+
+This creates an image named `camunda-process-solution:1.0.0-SNAPSHOT` by default.
+
+Run it locally with:
+
+```sh
+docker run --rm -p 8080:8080 camunda-process-solution:1.0.0-SNAPSHOT
+```
+
+To use a custom image name (for example before pushing to a registry):
+
+```sh
+./mvnw -DskipTests spring-boot:build-image -Dspring-boot.build-image.imageName=ghcr.io/<your-org>/camunda-process-solution:latest
+```
+
 Swagger UI: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ## Using this template
