@@ -1,6 +1,6 @@
 package org.example.camunda.process.solution.facade;
 
-import io.camunda.zeebe.client.ZeebeClient;
+import io.camunda.client.CamundaClient;
 import org.example.camunda.process.solution.ProcessConstants;
 import org.example.camunda.process.solution.ProcessVariables;
 import org.slf4j.Logger;
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProcessController {
 
   private static final Logger LOG = LoggerFactory.getLogger(ProcessController.class);
-  private final ZeebeClient zeebe;
+  private final CamundaClient zeebe;
 
-  public ProcessController(ZeebeClient client) {
+  public ProcessController(CamundaClient client) {
     this.zeebe = client;
   }
 
