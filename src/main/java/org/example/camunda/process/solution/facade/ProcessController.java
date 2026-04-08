@@ -1,6 +1,6 @@
 package org.example.camunda.process.solution.facade;
 
-import io.camunda.zeebe.client.ZeebeClient;
+import io.camunda.client.CamundaClient;
 import org.example.camunda.process.solution.ProcessConstants;
 import org.example.camunda.process.solution.ProcessVariables;
 import org.slf4j.Logger;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProcessController {
 
   private static final Logger LOG = LoggerFactory.getLogger(ProcessController.class);
-  private final ZeebeClient zeebe;
+  private final CamundaClient camunda;
 
-  public ProcessController(ZeebeClient client) {
-    this.zeebe = client;
+  public ProcessController(CamundaClient client) {
+    this.camunda = client;
   }
 
   @PostMapping("/start")
@@ -28,7 +28,7 @@ public class ProcessController {
     LOG.info(
         "Starting process `" + ProcessConstants.BPMN_PROCESS_ID + "` with variables: " + variables);
 
-    zeebe
+    camunda
         .newCreateInstanceCommand()
         .bpmnProcessId(ProcessConstants.BPMN_PROCESS_ID)
         .latestVersion()
@@ -48,7 +48,7 @@ public class ProcessController {
         correlationKey,
         variables);
 
-    zeebe
+    camunda
         .newPublishMessageCommand()
         .messageName(messageName)
         .correlationKey(correlationKey)
