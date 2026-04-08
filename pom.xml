@@ -11,9 +11,9 @@
 
   <properties>
     <java.version>21</java.version>
-    <spring-boot.version>3.3.0</spring-boot.version>
-    <zeebe.version>8.5.2</zeebe.version>
-    <spring-zeebe.version>8.5.5</spring-zeebe.version>
+    <spring-boot.version>3.4.3</spring-boot.version>
+    <camunda.version>8.6.10</camunda.version>
+    <camunda-process-test-coverage.version>2.7.0</camunda-process-test-coverage.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
   </properties>
@@ -30,7 +30,7 @@
       <dependency>
         <groupId>io.camunda</groupId>
         <artifactId>zeebe-bom</artifactId>
-        <version>${zeebe.version}</version>
+       <version>${camunda.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -52,7 +52,7 @@
     <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-      <version>2.2.0</version>
+      <version>2.8.5</version>
    </dependency>
 
     <dependency>
@@ -61,9 +61,9 @@
     </dependency>
 
     <dependency>
-      <groupId>io.camunda.spring</groupId>
-      <artifactId>spring-boot-starter-camunda</artifactId>
-      <version>${spring-zeebe.version}</version>
+      <groupId>io.camunda</groupId>
+      <artifactId>spring-boot-starter-camunda-sdk</artifactId>
+      <version>${camunda.version}</version>
     </dependency>
 
     <dependency>
@@ -72,12 +72,23 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>io.camunda.spring</groupId>
+      <groupId>io.camunda</groupId>
       <artifactId>spring-boot-starter-camunda-test</artifactId>
-      <version>${spring-zeebe.version}</version>
+      <version>${camunda.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.camunda.community.process_test_coverage</groupId>
+      <artifactId>camunda-process-test-coverage-junit5-platform-8</artifactId> 
+      <version>${camunda-process-test-coverage.version}</version>
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 
   <build>
@@ -86,8 +97,14 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.13.0</version>
+          <version>3.14.0</version>
           <configuration>
+            <annotationProcessorPaths>
+              <path>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+              </path>
+            </annotationProcessorPaths>
             <compilerArgs>
               <arg>-parameters</arg>
             </compilerArgs>
@@ -96,7 +113,7 @@
         <plugin>
           <groupId>com.diffplug.spotless</groupId>
           <artifactId>spotless-maven-plugin</artifactId>
-          <version>2.43.0</version>
+          <version>2.44.3</version>
           <configuration>
             <formats>
               <format>
@@ -122,22 +139,31 @@
     </pluginManagement>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <mainClass>org.camunda.community.examples.twitter.TwitterExampleApplication</mainClass>
+          <compilerArgs>
+            <arg>-parameters</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>${spring-boot.version}</version>
+        <configuration>
+          <excludes>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+          </excludes>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.5.2</version>
       </plugin>
     </plugins>
   </build>

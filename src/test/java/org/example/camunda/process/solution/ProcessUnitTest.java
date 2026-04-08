@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 /**
  * @see
@@ -31,12 +31,17 @@ public class ProcessUnitTest {
 
   @Autowired private ZeebeTestEngine engine;
 
-  @MockBean private MyService myService;
+  @MockitoBean private MyService myService;
 
   @Test
   public void testHappyPath() throws Exception {
     // define mock behavior
     when(myService.myOperation(anyString())).thenReturn(true);
+
+    // Enable detailed logging
+    System.setProperty("java.util.logging.ConsoleHandler.level", "ALL");
+    System.setProperty("io.grpc.internal.LogId", "ALL");
+    System.setProperty("io.grpc.netty.shaded.io.netty.handler.logging", "ALL");
 
     // prepare data
     final ProcessVariables variables = new ProcessVariables().setBusinessKey("23");
