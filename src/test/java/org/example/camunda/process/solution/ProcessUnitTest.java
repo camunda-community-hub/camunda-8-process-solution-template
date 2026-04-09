@@ -4,9 +4,6 @@ import static io.camunda.process.test.api.CamundaAssert.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
-import io.camunda.client.CamundaClient;
-import io.camunda.client.api.response.ProcessInstanceEvent;
-import io.camunda.process.test.api.CamundaSpringProcessTest;
 import org.example.camunda.process.solution.service.MyService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,15 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
+import io.camunda.client.CamundaClient;
+import io.camunda.client.api.response.ProcessInstanceEvent;
+import io.camunda.process.test.api.CamundaProcessTestContext;
+import io.camunda.process.test.api.CamundaSpringProcessTest;
+
 /**
  * @see
  *     https://docs.camunda.io/docs/components/best-practices/development/testing-process-definitions/#writing-process-tests-in-java
  */
-@SpringBootTest(classes = ProcessApplication.class) // will deploy BPMN & DMN models
+@SpringBootTest // use ProcessApplication in same package to deploy BPMN & DMN models and start job workers
 @CamundaSpringProcessTest
 public class ProcessUnitTest {
 
   @Autowired private CamundaClient camunda;
+  @Autowired private CamundaProcessTestContext processTestContext;
 
   @MockitoBean private MyService myService;
 
