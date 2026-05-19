@@ -8,8 +8,8 @@ It is maintained under the `camunda-community-hub` GitHub organization.
 
 - **Repository:** `camunda-community-hub/camunda-8-process-solution-template`
 - **Java:** 21
-- **Spring Boot:** 3.5.3
-- **Camunda SDK:** 8.8.21 (`camunda-spring-boot-starter`)
+- **Spring Boot:** 4.x
+- **Camunda SDK:** 8.9.x (`camunda-spring-boot-starter`)
 - **Build tool:** Maven (use `./mvnw`, the checked-in Maven wrapper)
 - **BPMN Process ID:** `camunda-process` (defined in `ProcessConstants.java`)
 

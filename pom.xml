@@ -11,8 +11,8 @@
 
   <properties>
     <java.version>21</java.version>
-    <spring-boot.version>3.5.3</spring-boot.version>
-    <camunda.version>8.8.21</camunda.version>
+    <spring-boot.version>4.0.6</spring-boot.version>
+    <camunda.version>8.9.5</camunda.version>
     <camunda-process-test-coverage.version>2.7.0</camunda-process-test-coverage.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -24,13 +24,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
         <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>io.camunda</groupId>
-        <artifactId>zeebe-bom</artifactId>
-       <version>${camunda.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -152,6 +145,12 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>${spring-boot.version}</version>
         <configuration>
+          <image>
+            <name>${project.artifactId}:${project.version}</name>
+            <env>
+              <BP_JVM_VERSION>${java.version}</BP_JVM_VERSION>
+            </env>
+          </image>
           <excludes>
             <exclude>
               <groupId>org.projectlombok</groupId>
